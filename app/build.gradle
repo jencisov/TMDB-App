@@ -16,6 +16,7 @@ android {
         buildConfigField "String", "API_ENDPOINT", '"http://api.themoviedb.org/3/movie/"'
         buildConfigField "String", "API_KEY", '"1f54bd990f1cdfb230adb312546d765d"'
         buildConfigField "String", "POSTER_LITTLE_BASE_URL", '"https://image.tmdb.org/t/p/w185_and_h278_bestv2/"'
+        buildConfigField "String", "POSTER_BIG_BASE_URL", '"https://image.tmdb.org/t/p/w600_and_h900_bestv2/"'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

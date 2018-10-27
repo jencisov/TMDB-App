@@ -1,11 +1,15 @@
-package com.jencisov.tmdb.app.ui
+package com.jencisov.tmdb.app.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.ImageView
 import com.jencisov.tmdb.R
+import com.jencisov.tmdb.app.ui.adapter.MovieAdapter
+import com.jencisov.tmdb.app.ui.viewmodel.MovieViewModel
+import com.jencisov.tmdb.app.utils.LastClick
 import com.jencisov.tmdb.domain.models.Movie
 import kotlinx.android.synthetic.main.activity_movies.*
 
@@ -22,10 +26,23 @@ class MoviesActivity : AppCompatActivity() {
         registerObservables()
     }
 
+    override fun onDestroy() {
+        viewModel.resetMoviesDownloadingCurrentPage()
+        super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        viewModel.resetMoviesDownloadingCurrentPage()
+        super.onBackPressed()
+    }
+
     private fun setupViews() {
         adapter = MovieAdapter(
                 object : MovieAdapter.ItemClickListener {
-                    override fun onItemClicked(movie: Movie) {
+                    override fun onItemClicked(movie: Movie, imageView: ImageView) {
+                        if (LastClick.releaseTheClick()) {
+                            MovieDetailActivity.launchActivity(this@MoviesActivity, movie, imageView)
+                        }
                     }
                 }
         )

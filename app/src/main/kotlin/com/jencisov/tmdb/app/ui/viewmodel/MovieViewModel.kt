@@ -1,6 +1,7 @@
-package com.jencisov.tmdb.app.ui
+package com.jencisov.tmdb.app.ui.viewmodel
 
 import com.jencisov.tmdb.app.ui.base.BasePaginationViewModel
+import com.jencisov.tmdb.data.pagination.datasource.UpcomingMoviesDataSource
 import com.jencisov.tmdb.domain.models.Movie
 import com.jencisov.tmdb.data.pagination.factory.UpcomingMoviesDataSourceFactory
 
@@ -14,6 +15,10 @@ class MovieViewModel : BasePaginationViewModel<UpcomingMoviesDataSourceFactory, 
 
     fun performInitialLoad() {
         dataSourceFactory
+    }
+
+    fun resetMoviesDownloadingCurrentPage(){
+        UpcomingMoviesDataSource.CURRENT_PAGE = 1
     }
 
 }

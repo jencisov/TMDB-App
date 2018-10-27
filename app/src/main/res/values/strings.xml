@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TMDB</string>
+    <string name="movie_details">Movie Details</string>
 
     <string name="no_rating">NR</string>
     <string name="empty_state_text">There was a problem finding the movies, please try again later</string>

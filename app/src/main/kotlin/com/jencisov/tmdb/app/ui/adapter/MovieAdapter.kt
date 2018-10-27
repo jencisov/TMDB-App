@@ -1,4 +1,4 @@
-package com.jencisov.tmdb.app.ui
+package com.jencisov.tmdb.app.ui.adapter
 
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
+import com.jencisov.tmdb.BuildConfig
 import com.jencisov.tmdb.R
 import com.jencisov.tmdb.app.ui.base.BaseDiffAdapter
 import com.jencisov.tmdb.app.ui.base.VIEW_TYPE_NORMAL
@@ -18,7 +20,7 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieAdapter(var listener: ItemClickListener) : BaseDiffAdapter<Movie, RecyclerView.ViewHolder>() {
     interface ItemClickListener {
-        fun onItemClicked(movie: Movie)
+        fun onItemClicked(movie: Movie, imageView: ImageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -37,11 +39,11 @@ class MovieAdapter(var listener: ItemClickListener) : BaseDiffAdapter<Movie, Rec
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
             val movie = getItem(position)
             val viewHolder = holder as MovieViewHolder
-            viewHolder.posterTv.loadPoster(movie?.getPosterPath())
-            viewHolder.titleTv.text = movie?.getTitle()
-            viewHolder.releaseDateTv.text = movie?.getReleaseDate()
-            setupGenres(viewHolder.genresLl, movie?.getGenres())
-            viewHolder.itemView.setOnClickListener({ v -> listener.onItemClicked(movie!!) })
+            viewHolder.posterIv.loadPoster(movie?.posterPath, BuildConfig.POSTER_LITTLE_BASE_URL)
+            viewHolder.titleTv.text = movie?.title
+            viewHolder.releaseDateTv.text = movie?.title
+            setupGenres(viewHolder.genresLl, movie?.genres)
+            viewHolder.itemView.setOnClickListener { listener.onItemClicked(movie!!, viewHolder.posterIv) }
         }
     }
 
@@ -65,7 +67,7 @@ class MovieAdapter(var listener: ItemClickListener) : BaseDiffAdapter<Movie, Rec
     }
 
     class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val posterTv = view.item_movie_poster_iv
+        val posterIv = view.item_movie_poster_iv
         val titleTv = view.item_movie_title_tv
         val releaseDateTv = view.item_movie_release_date_tv
         val genresLl = view.item_movie_genres_ll
