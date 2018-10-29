@@ -1,7 +1,6 @@
 package com.jencisov.tmdb.app.ui.activity
 
 import android.app.Activity
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -10,11 +9,9 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.CardView
 import android.support.v7.widget.Toolbar
 import android.transition.Slide
 import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import com.jencisov.tmdb.BuildConfig
 import com.jencisov.tmdb.R
@@ -22,7 +19,6 @@ import com.jencisov.tmdb.app.utils.Genres
 import com.jencisov.tmdb.domain.models.Movie
 import com.jencisov.tmdb.extensions.loadPoster
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.item_genre.view.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -85,18 +81,20 @@ class MovieDetailActivity : AppCompatActivity() {
             return
         }
 
-        detail_movie_genres_ll.removeAllViews()
-        for (genreId in genres) {
+        val genreStringBuilder = StringBuilder()
+        for ((index, genreId) in genres.withIndex()) {
             val genreText = Genres.getGenreById(genreId)
             if (genreText.isNullOrBlank()) {
                 return
             }
 
-            val genreCv = View.inflate(detail_movie_genres_ll.context, R.layout.item_genre, null) as CardView
-            val genreTv = genreCv.item_genre_tv
-            genreTv.text = genreText.toString()
-            detail_movie_genres_ll.addView(genreCv)
+            genreStringBuilder.append(genreText)
+            if (index < genres.size - 1) {
+                genreStringBuilder.append(" - ")
+            }
         }
+
+        detail_movie_genres_tv.text = genreStringBuilder.toString()
     }
 
     private fun prepareWindowForAnimation() {

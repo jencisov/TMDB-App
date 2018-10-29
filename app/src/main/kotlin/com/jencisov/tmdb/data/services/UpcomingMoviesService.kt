@@ -7,11 +7,11 @@ import com.jencisov.tmdb.data.client.Client
 import io.reactivex.Single
 import retrofit2.Response
 
-class MovieService {
+class UpcomingMoviesService {
     var api: UpcomingMoviesApi = Client.retrofit.create(UpcomingMoviesApi::class.java)
 
-    fun getReposForUser(pageNumber: Int): Single<Response<MoviesResponse>> {
-        return api.getRepos(BuildConfig.API_KEY, pageNumber)
+    fun getUpcomingMovies(pageNumber: Int): Single<Response<MoviesResponse>> {
+        return api.getUpcomingMovies(BuildConfig.API_KEY, pageNumber)
     }
 
 }

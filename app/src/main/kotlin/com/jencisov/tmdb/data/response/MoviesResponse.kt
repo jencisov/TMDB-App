@@ -6,6 +6,6 @@ import com.jencisov.tmdb.data.models.MovieDto
 class MoviesResponse {
 
     @SerializedName("results")
-    lateinit var movies: MutableList<MovieDto>
+    lateinit var movies: List<MovieDto>
 
 }

@@ -25,7 +25,7 @@ abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K> : View
     val recyclerViewLoadingEvents : MutableLiveData<Event<Boolean>> get() = _recyclerViewLoadingEvents
     private val _recyclerViewLoadingEvents = MutableLiveData<Event<Boolean>>()
 
-    val errorToastEvent : MutableLiveData<Event<Unit>> get() = _errorToastEvent
+    val errorEvent : MutableLiveData<Event<Unit>> get() = _errorToastEvent
     private val _errorToastEvent = MutableLiveData<Event<Unit>>()
 
     abstract fun getPageSize() : Int
@@ -102,7 +102,7 @@ abstract class BasePaginationViewModel<T : DataSource.Factory<Int, K>, K> : View
     }
 
     fun showErrorToast() {
-        errorToastEvent.postValue(Event(Unit))
+        errorEvent.postValue(Event(Unit))
     }
 
     fun addDisposable(d : Disposable) = compositeDisposable.add(d)

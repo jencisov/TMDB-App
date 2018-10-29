@@ -95,21 +95,16 @@
                 tools:text="Lorem ipsum lorem ipsum"
                 />
 
-            <HorizontalScrollView
-                android:id="@+id/detail_movie_genres_hsv"
+            <TextView
+                android:id="@+id/detail_movie_genres_tv"
+                style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                >
-
-                <LinearLayout
-                    android:id="@+id/detail_movie_genres_ll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    />
-
-            </HorizontalScrollView>
+                android:ellipsize="end"
+                android:gravity="start"
+                tools:text="Drama"
+                />
 
         </LinearLayout>
 

@@ -6,13 +6,13 @@ import org.mapstruct.Mapper
 import org.mapstruct.factory.Mappers
 
 @Mapper
-interface ReposMapper {
+interface UpcomingMoviesMapper {
 
     companion object {
-        val Instance = Mappers.getMapper(ReposMapper::class.java)!!
+        val Instance = Mappers.getMapper(UpcomingMoviesMapper::class.java)!!
     }
 
-    fun map(repos: MovieDto?): Movie
-    fun mapList(repos: List<MovieDto>?): List<Movie>
+    fun map(movie: MovieDto?): Movie
+    fun mapList(movieList: List<MovieDto>?): List<Movie>
 
 }

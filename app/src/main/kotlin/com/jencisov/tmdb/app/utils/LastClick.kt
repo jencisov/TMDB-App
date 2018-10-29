@@ -7,10 +7,10 @@ object LastClick {
 
     fun releaseTheClick(): Boolean {
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-            return false;
+            return false
         }
-        mLastClickTime = SystemClock.elapsedRealtime();
-        return true;
+        mLastClickTime = SystemClock.elapsedRealtime()
+        return true
     }
 
 }

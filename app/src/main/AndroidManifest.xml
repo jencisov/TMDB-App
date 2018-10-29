@@ -13,13 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".app.ui.activity.MoviesActivity">
+        <activity
+            android:name=".app.ui.activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".app.ui.activity.MoviesActivity"
+            />
         <activity
             android:name=".app.ui.activity.MovieDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"

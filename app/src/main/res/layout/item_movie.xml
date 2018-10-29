@@ -10,6 +10,7 @@
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
     android:background="@color/white"
+    android:foreground="?attr/selectableItemBackground"
     android:paddingStart="4dp"
     android:paddingTop="4dp"
     android:paddingEnd="4dp"
@@ -66,26 +67,22 @@
             tools:text="2018-10-03"
             />
 
-        <HorizontalScrollView
-            android:id="@+id/item_movie_genres_hsv"
+        <TextView
+            android:id="@+id/item_movie_genres_tv"
+            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_movie_poster_iv"
             app:layout_constraintTop_toBottomOf="@+id/item_movie_release_date_tv"
-            >
-
-            <LinearLayout
-                android:id="@+id/item_movie_genres_ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                />
-
-        </HorizontalScrollView>
+            tools:text="Drama"
+            />
 
     </android.support.constraint.ConstraintLayout>
 

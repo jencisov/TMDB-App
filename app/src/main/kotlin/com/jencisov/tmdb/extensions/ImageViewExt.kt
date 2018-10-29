@@ -13,5 +13,5 @@ fun ImageView.loadPoster(imagePath: String?, baseUrl: String) {
             .load(url)
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.place_holder)
-            .into(this);
+            .into(this)
 }

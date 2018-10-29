@@ -8,8 +8,8 @@ import retrofit2.http.Query
 
 interface UpcomingMoviesApi {
 
-    @GET("upcoming")
-    fun getRepos(
+    @GET("movie/upcoming")
+    fun getUpcomingMovies(
         @Query("api_key") apiKey: String,
         @Query("page") pageNumber: Int
     ): Single<Response<MoviesResponse>>

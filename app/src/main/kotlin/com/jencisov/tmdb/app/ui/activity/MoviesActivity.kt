@@ -1,7 +1,9 @@
 package com.jencisov.tmdb.app.ui.activity
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -14,6 +16,11 @@ import com.jencisov.tmdb.domain.models.Movie
 import kotlinx.android.synthetic.main.activity_movies.*
 
 class MoviesActivity : AppCompatActivity() {
+
+    companion object {
+        fun launchActivity(activity: Activity) = activity.startActivity(Intent(activity, MoviesActivity::class.java))
+    }
+
     private lateinit var viewModel: MovieViewModel
     private lateinit var adapter: MovieAdapter
 
@@ -53,7 +60,7 @@ class MoviesActivity : AppCompatActivity() {
     private fun registerObservables() {
         submitItems()
 
-        viewModel.errorToastEvent.observe(this,
+        viewModel.errorEvent.observe(this,
                 Observer {
                     this.upcoming_movies_empty_state.visibility == View.VISIBLE
                 }
